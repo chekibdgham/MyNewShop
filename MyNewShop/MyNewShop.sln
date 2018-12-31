@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.core", "MyNewShop.core\MyNewShop.core.csproj", "{A3A8D8DE-FA98-4B55-9A38-5BE3525577C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.Core", "MyNewShop.core\MyNewShop.Core.csproj", "{A3A8D8DE-FA98-4B55-9A38-5BE3525577C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.services", "MyNewShop.services\MyNewShop.services.csproj", "{D488D01A-1F1B-4401-A411-D16E81FAF626}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.Services", "MyNewShop.services\MyNewShop.Services.csproj", "{D488D01A-1F1B-4401-A411-D16E81FAF626}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.DataAccess.SQL", "MyNewShop.DataAccess.SQL\MyNewShop.DataAccess.SQL.csproj", "{606E017F-8945-41F9-9810-E1B4A414F9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.DataAcess.InMemory", "MyNewShop.DataAcess.InMemory\MyNewShop.DataAcess.InMemory.csproj", "{987A74EA-6E08-4D67-BA8B-BC8CD1344065}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.DataAccess.InMemory", "MyNewShop.DataAcess.InMemory\MyNewShop.DataAccess.InMemory.csproj", "{987A74EA-6E08-4D67-BA8B-BC8CD1344065}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewShop.WebUI", "MyNewShop.WebUI\MyNewShop.WebUI.csproj", "{FAE94503-AC5D-4073-B78D-FCD8DA0A56A9}"
 EndProject
