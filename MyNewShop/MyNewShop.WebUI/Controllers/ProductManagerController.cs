@@ -5,15 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using MyNewShop.Core.Models;
 using MyNewShop.DataAcess.InMemory;
+using MyNewShop.Core.ViewModels;
 
 namespace MyNewShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
+        ProductCategoryRepository productCategories;
         ProductRepository context;
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
 
         // GET: ProductManager
@@ -25,8 +28,10 @@ namespace MyNewShop.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductCategoryManagerViewModel viewmodel = new ProductCategoryManagerViewModel();
+            viewmodel.Product = new Product();
+            viewmodel.ProductCategories = productCategories.Collection();
+            return View(viewmodel);
         }
 
         [HttpPost]
@@ -46,14 +51,18 @@ namespace MyNewShop.WebUI.Controllers
 
         public ActionResult Edit(string id)
         {
-            Product product = context.Find(id);
+            Product product = new Product();
+            product = context.Find(id);
             if (product==null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(product);
+                ProductCategoryManagerViewModel viewmodel = new ProductCategoryManagerViewModel();
+                viewmodel.Product = product;
+                viewmodel.ProductCategories = productCategories.Collection();
+                return View(viewmodel);
             }
         }
 
@@ -77,7 +86,7 @@ namespace MyNewShop.WebUI.Controllers
                     productToEdit.Image = product.Image;
                     productToEdit.Name = product.Name;
                     productToEdit.Price = product.Price;
-                    //context.Update(productToEdit);
+                    context.Update(productToEdit);
                     context.Commit();
                     return RedirectToAction("Index");
                 }

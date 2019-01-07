@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace MyNewShop.Core.Models
 {
     public class Product
@@ -17,13 +18,15 @@ namespace MyNewShop.Core.Models
         public string Description { get; set; }
         [Range(0,1000)]
         public decimal Price { get; set; }
-        public string Category { get; set; }
 
+        public string Category { get; set; }
+       
         public string Image { get; set; }
 
         public Product()
         {
             this.Id = Guid.NewGuid().ToString();
-        }
+        }             
     }
+   
 }
