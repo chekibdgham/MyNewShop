@@ -6,17 +6,20 @@ using System.Web.Mvc;
 using MyNewShop.Core.Models;
 using MyNewShop.DataAcess.InMemory;
 using MyNewShop.Core.ViewModels;
+using MyNewShop.Core.Contracts;
 
 namespace MyNewShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductCategoryRepository productCategories;
-        ProductRepository context;
-        public ProductManagerController()
+        Core.Contracts.IRepository<ProductCategory> productCategories;
+
+        Core.Contracts.IRepository<Product> context;
+
+        public ProductManagerController(Core.Contracts.IRepository<Product> productContext, Core.Contracts.IRepository<ProductCategory> productCategoriesContext)
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = productContext;
+            productCategories = productCategoriesContext;
         }
 
         // GET: ProductManager

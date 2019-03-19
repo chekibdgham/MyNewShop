@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    
+</style>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+</div>
+<div id="error" style="display:none">
+    <span style="color:red ; border:solid 1px red">Vous n'avez pas rempli correctement les champs de formulaire !</span>
+</div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="pseudo" class="control-label col-md-2">Pseudoname</label>
+        <input type="text" id="pseudo" class="champ form-control col-md-10" />
+    </div>
+    <div class="form-group">
+        <label for="mdp" class="control-label col-md-2">Mot de passe</label>
+        <input type="password" id="mdp" class="champ form-control col-md-10" />
+    </div>
+    <div class="form-group">
+        <label for="confirmation" class="control-label col-md-2">Confirmation</label>
+        <input type="password" id="confirmation" class="champ form-control col-md-10" />
+    </div>
+    <div class="form-group">
+        <label for="mail" class="control-label col-md-2">E-mail</label>
+        <input type="email" id="mail" class="champ form-control col-md-10" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default col-md-offset-2" id="envoi" value="Envoyer" />
+        <input type="reset"  class="btn btn-default" id="rafraichir" value="Rafraichir" />
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        var $Pseudo = $('#pseudo'),
+            $Mdp = $('#mdp'),
+            $Confirmation = $('#confirmation'),
+            $Mail = $('#mail'),
+            $Envoi = $('#envoi'),
+            $Rafraichir = $('#rafraichir'),
+            $Champ = $('.champ'),
+            $Error = $('#error');
+
+        // Check length text
+        $Champ.keyup(function () {
+            $Error.css('display', 'none');
+            if ($(this).val().length < 5) {
+                $(this).css({
+                    borderColor: 'red',
+                    color: 'red'
+                });
+            } else {
+                $(this).css({
+                    borderColor: 'green',
+                    color: 'green'
+                });
+            }
+        })
+
+
+        //Check password confirmation
+        $Confirmation.keyup(function () {
+            if ($(this).val() == $Mdp.val()) {
+                $(this).css({
+                    borderColor: 'green',
+                    color: 'green',
+                })
+            } else {
+                $(this).css({
+                    borderColor: 'red',
+                    color: 'red',
+                });
+            }
+        });
+
+        
+
+        ////Submit button Code
+        $Envoi.click(function (e) {
+            e.preventDefault();
+            Verifier($Pseudo);
+            Verifier($Mdp);
+            Verifier($Confirmation);
+            Verifier($Mail);
+        });
+
+        //Reset button code
+        $Rafraichir.click(function () {
+            $Champ.css({
+                borderColor: '#ccc',
+                color: '#555'
+            });
+            $Error.css('display', 'none');
+        });
+
+        //Check Empty fields
+        function Verifier(champ) {
+            if (champ.val() == "") {
+                $Error.css('display', 'block');// On affiche le message d'erreur
+
+                champ.css({
+                    borderColor: 'red',
+                    color: 'red'
+                });
+            }
+        }
+    });
+</script>

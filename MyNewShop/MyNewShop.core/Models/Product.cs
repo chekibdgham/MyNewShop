@@ -9,13 +9,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyNewShop.Core.Models
 {
-    public class Product
+    public class Product:BaseEntity
     {
-        public string Id { get; set; }
         [StringLength(20)]
         [DisplayName("Product Name")]
         public string Name { get; set; }
+
         public string Description { get; set; }
+
         [Range(0,1000)]
         public decimal Price { get; set; }
 

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Start with jQuery and AJAX</h2>
+<head>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <h3>Connection Form</h3>
+    <form class="form-horizontal">
+        User Name : <input type="text" id="user" class="form-control" />
+        Password : <input type="password" id="pw" class="form-control" />
+        <input type="submit" id="submit" value="Connect" />
+        
+        <div class="resultat">
+            @* show result here *@
+            <p>Connection result...</p>
+        </div>
+    </form>
+</body>
+<script>
+    //$(document).ready(function () {
+    //    $('#submit').click(function () {
+    //        $.post(
+    //                '/Home/ResultConnection',
+    //                {
+    //                    username: $('#user').val(),
+    //                    password: $('#pw').val()
+    //                },
+    //                    function (data) {
+    //                        if (data == "success") {
+    //                            alert("success");
+    //                            //$('#resultat').html('<p>Success</p>')
+    //                        }
+    //                        else {
+    //                            alert("failed");
+    //                            //$('#resultat').html('<p>failed</p>')
+    //                        }
+    //                    },
+    //                    'text'
+    //                    );
+    //    });
+        
+    //});
+</script>

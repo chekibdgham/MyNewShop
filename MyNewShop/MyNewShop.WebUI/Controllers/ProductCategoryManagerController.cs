@@ -6,16 +6,17 @@ using System.Web.Mvc;
 using MyNewShop.Core;
 using MyNewShop.DataAcess.InMemory;
 using MyNewShop.Core.Models;
+using MyNewShop.Core.Contracts;
 
 namespace MyNewShop.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        ProductCategoryRepository context;
+        IRepository<ProductCategory> context;
 
-        public ProductCategoryManagerController()
+        public ProductCategoryManagerController(IRepository<ProductCategory> productCategoryContext)
         {
-            context = new ProductCategoryRepository();
+            this.context = productCategoryContext;
         }   
         
         // GET: ProductCategory

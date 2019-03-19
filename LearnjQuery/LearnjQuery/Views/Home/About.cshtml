@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+<head>
+    <title>Un formulaire de connexion en AJAX</title>
+</head>
+<body>
+    <h1>Formilaire de connexion en AJAX</h1>
+    <form class="form-horizontal">
+        <p>
+            UserName : <input type="text" id="username" class="form-control"/>
+            Password : <input type="password" id="password" class="form-control"/>
+            <input type="submit" id="submit" value="Connect"/>
+        </p>
+    </form>
+</body>
+<div id="resultat">
+     <!-- To Show the result -->
+</div>
+<script>
+    $(document).ready(function () {
+        $('#submit').click(function (e) {
+            e.preventDefault();
+            // alert('salut tt le monde')
+            debugger
+            $.post(
+                'home/ChekConnection', // call function in server side
+                {
+                    username: $('#username').val(),// first parameter
+                    password: $('#password').val() // Second parameter
+                },
+                function (data) {
+                    alert('salut');
+                    //if (data == "Success") {
+                    //    $("#resultat").html('<p>You are connected.</p>');
+                    //} else {
+                        
+                    //    $("#resultat").html('<p>Username or password not found. retry...</p>')
+                       
+                    //}
+                },
+                'text'
+            );
+            debugger;
+        });
+    });
+</script>
+

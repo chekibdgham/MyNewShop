@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<style>
+    #carrousel{
+        position:relative;
+        height:200px;
+        width:300px;
+        margin:auto;
+    }
+    #carrousel ul li{
+        position:absolute;
+        top:0px;
+        left:0px;
+    }
+</style>
+
+
+
+<h2>@ViewBag.Title.</h2>
+<h3>Start with jQuery</h3>
+<head>
+<title>Carrousel</title>
+</head>
+
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.color-2.1.2.min.js"></script>
+<script src="~/Scripts/jquery.color.svg-names-2.1.2.min.js"></script>
+
+<input id="Button1" type="button" value="button" />
+
+    <div id="carrousel">
+        <ul>
+            <li><img src="~/Content/images/image1.png" title="DownTown" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image2.png" title="image2" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image3.png" title="image3" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image4.png" title="image4" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image5.png" title="image5" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image6.png" title="Cute Girl" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image7.png" title="image7" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image8.png" title="image8" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image9.png" title="image9" class="img-rounded" width="300" height="200"/></li>
+            <li><img src="~/Content/images/image10.png" title="image10" class="img-rounded" width="300" height="200"/></li>
+        </ul>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        //Notre code ici
+        var $carrousel = $('#carrousel'), //On cible le bloc du carrousel
+            $img = $('#carrousel img'),   // on cible les images continues dans le carrousel
+            IndexImg = $img.length - 1,   // On defini l'index du dernier element
+            i = 0,                        // On initialise un compteur
+            $currentImg = $img.eq(i);     //On cible l'image courante
+            $img.css('display', 'none');         // On cache les images
+            $currentImg.css('display', 'block'); // On affiche seulement l'image courante
+            $carrousel.append('<div class="controls"> <span class="prev">Precedent</span> <span class="next">Suivant</span> </div>');            
+
+        $('#Button1').click(function () {
+                if (i < IndexImg) {
+                    i++;
+                } else {
+                    i = 0;
+                }
+                $img.css('display', 'none');
+                $currentImg = $img.eq(i);
+                $currentImg.css('display', 'block');
+            });
+
+            $('.prev').click(function () {
+                if (i >= 0) {
+                    $img.css('display', 'none');
+                    i--;
+                    $currentImg = $img.eq(i);
+                    $currentImg.css('display', 'block');
+                } else {
+                    i = 0;
+                }
+            });
+            function SlideImage() {
+                setTimeout(function () {
+                    if (i < IndexImg) {
+                        i++
+                    } else {
+                        i = 0;
+                    }
+                    $img.css('display', 'none');
+                    $currentImg = $img.eq(i);
+                    $currentImg.css('display', 'block');
+                    SlideImage();
+                }, 2000);
+                
+            }
+            SlideImage();
+    });
+
+    
+</script>
+
+
+
