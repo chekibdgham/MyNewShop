@@ -95,8 +95,7 @@ namespace MyNewShop.WebUI.Controllers
             else
                 return View(ProductCategoryToDelete);
         }
-        [HttpPost]
-        [ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public ActionResult ConfirmDelete(string id)
         {
             ProductCategory pc = new ProductCategory();
