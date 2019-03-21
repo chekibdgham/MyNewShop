@@ -17,16 +17,26 @@ namespace MyNewShop.WebUI.Controllers
 
         IRepository<Product> context;
 
-        public ProductManagerController(Core.Contracts.IRepository<Product> productContext, Core.Contracts.IRepository<ProductCategory> productCategoriesContext)
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoriesContext)
         {
             context = productContext;
             productCategories = productCategoriesContext;
         }
 
         // GET: ProductManager
-        public ActionResult Index()
+        public ActionResult Index(string category=null)
         {
-            List<Product> products = context.Collection().ToList();
+            List<Product> products;
+            List<ProductCategory> categries = productCategories.Collection().ToList();
+            if (categries==null)
+            {
+                products = context.Collection().ToList();
+            }
+            else
+            {
+                products = context.Collection().Where(x => x.Category == category).ToList();
+            }
+            ProductListViewModel
             return View(products);
         }
 
@@ -92,12 +102,11 @@ namespace MyNewShop.WebUI.Controllers
                 {
                     if (file!=null)
                     {
-                        product.Image = product.Id + file.FileName + Path.GetExtension(file.FileName);
-                        file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
+                        productToEdit.Image = product.Id + file.FileName + Path.GetExtension(file.FileName);
+                        file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
                     }
                     productToEdit.Category = product.Category;
                     productToEdit.Description = product.Description;
-                    productToEdit.Image = product.Image;
                     productToEdit.Name = product.Name;
                     productToEdit.Price = product.Price;
                     context.Update(productToEdit);
