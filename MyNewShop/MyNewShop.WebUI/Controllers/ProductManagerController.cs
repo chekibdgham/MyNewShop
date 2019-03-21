@@ -13,9 +13,9 @@ namespace MyNewShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        Core.Contracts.IRepository<ProductCategory> productCategories;
+        IRepository<ProductCategory> productCategories;
 
-        Core.Contracts.IRepository<Product> context;
+        IRepository<Product> context;
 
         public ProductManagerController(Core.Contracts.IRepository<Product> productContext, Core.Contracts.IRepository<ProductCategory> productCategoriesContext)
         {
