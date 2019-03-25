@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyNewShop.Core.Models;
-using MyNewShop.DataAcess.InMemory;
 using MyNewShop.Core.ViewModels;
 using MyNewShop.Core.Contracts;
 using System.IO;
@@ -24,19 +22,11 @@ namespace MyNewShop.WebUI.Controllers
         }
 
         // GET: ProductManager
-        public ActionResult Index(string category=null)
+        public ActionResult Index()
         {
-            List<Product> products;
-            List<ProductCategory> categries = productCategories.Collection().ToList();
-            if (categries==null)
-            {
-                products = context.Collection().ToList();
-            }
-            else
-            {
-                products = context.Collection().Where(x => x.Category == category).ToList();
-            }
-            ProductListViewModel
+
+            List<Product> products=context.Collection().ToList();
+            
             return View(products);
         }
 
