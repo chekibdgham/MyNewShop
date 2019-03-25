@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyNewShop.core.ViewModels
+namespace MyNewShop.Core.ViewModels
 {
     public class ProductListViewModel
     {
