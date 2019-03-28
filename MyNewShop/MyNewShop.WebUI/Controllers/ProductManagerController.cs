@@ -25,18 +25,10 @@ namespace MyNewShop.WebUI.Controllers
         }
 
         // GET: ProductManager
-        public ActionResult Index(string category=null)
+        public ActionResult Index()
         {
-            List<Product> products;
+            List<Product> products=context.Collection().ToList();
             List<ProductCategory> categries = productCategories.Collection().ToList();
-            if (categries==null)
-            {
-                products = context.Collection().ToList();
-            }
-            else
-            {
-                products = context.Collection().Where(x => x.Category == category).ToList();
-            }
             
             return View(products);
         }

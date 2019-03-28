@@ -18,25 +18,25 @@ namespace MyNewShop.WebUI.Controllers
         public ActionResult Index()
         {
             var model = basketService.GetBasketItems(this.HttpContext);
-            return View();
+            return View(model);
         }
 
         public ActionResult AddToBasket(string Id)
         {
             basketService.AddToBasket(HttpContext, Id);
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult RemoveFromBasket(string Id)
         {
-            basketService.removeFromBasket(HttpContext, Id);
-            return View();
+            basketService.removeFromBasket(this.HttpContext, Id);
+            return RedirectToAction("Index");
         }
 
         public PartialViewResult BasketSummary()
         {
-            basketService.GetBasketSummary(HttpContext);
-            return PartialView();
+            var basketSummary=basketService.GetBasketSummary(HttpContext);
+            return PartialView(basketSummary);
         }
     }
 }
